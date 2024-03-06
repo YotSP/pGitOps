@@ -11,7 +11,7 @@ spec:
   source:
     path: 0-bootstrap/giss-gitops-pro-cluster
     repoURL: https://github.com/YotSP/pGitOps.git
-    targetRevision: master
+    targetRevision: main
   syncPolicy:
     automated:
       prune: true

@@ -3,7 +3,7 @@ resources:
 #- 2-services/2-services.yaml
 #- 3-apps/3-apps.yaml
 patches:
-- target:
+- target: #Este parametro añade los repositorios de origen a los app project.
     group: argoproj.io
     kind: Application
     labelSelector: "gitops.tier.layer=gitops"
@@ -13,25 +13,22 @@ patches:
       value: https://github.com/YotSP/pGitOps.git
     - op: add
       path: /spec/source/targetRevision
-      value: master
-- target:
-    group: argoproj.io
-    kind: AppProject
-  patch: |-
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://charts.cloudnativetoolkit.dev
-- target:
+      value: main
+# - target:
+#     group: argoproj.io
+#     kind: AppProject
+#   patch: |-
+#     - op: add
+#       path: /spec/sourceRepos/-
+#       value: https://charts.cloudnativetoolkit.dev
+- target: # 
     group: argoproj.io
     kind: AppProject
     labelSelector: "gitops.tier.layer=infra"
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops-infra.git
+      value: https://github.com/YotSP/pGitOps.git
 - target:
     group: argoproj.io
     kind: AppProject
@@ -39,16 +36,7 @@ patches:
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops-services.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops-apps.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://charts.cloudnativetoolkit.dev
+      value: https://github.com/YotSP/pGitOps.git
 - target:
     group: argoproj.io
     kind: AppProject
@@ -56,17 +44,8 @@ patches:
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/multi-tenancy-gitops-apps.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://jesusmah.github.io/helm-chart-repo
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/training-giss-gitops/produccion-y-sistemas.git
-- target:
+      value: https://github.com/YotSP/pGitOps.git
+- target: #Este parametro sustituye en las apps de argocd, el valor para el namespace, para evitar errores y que todos vayan al mismo ns.
     group: argoproj.io
     kind: Application
   patch: |-
