@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: namespace-gint-ap1
+  labels:
+    gitops.tier.layer: infra
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: infra
+  source:
+    chart: namespace
+    targetRevision: 0.0.1
+#    repoURL: [] # Inyectado desde el Kustomize
+    helm:
+      values: |
+        namespace: 
+          name: gint-ap1
+

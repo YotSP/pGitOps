@@ -1,10 +1,10 @@
 resources:
 #- argocd/consolelink.yaml
-- argocd/consolenotification.yaml
+# - argocd/consolenotification.yaml
 #- argocd/namespace-ibm-common-services.yaml
 #- argocd/namespace-ci.yaml
-- argocd/namespace-dev.yaml
-- argocd/namespace-staging.yaml
+#- argocd/namespace-dev.yaml
+#- argocd/namespace-staging.yaml
 #- argocd/namespace-prod.yaml
 #- argocd/namespace-cloudpak.yaml
 #- argocd/namespace-istio-system.yaml
@@ -13,6 +13,7 @@ resources:
 #- argocd/serviceaccounts-ibm-common-services.yaml
 #- argocd/infraconfig.yaml
 #- argocd/machinesets.yaml
+- namespaces/gint-ap1.yaml
 patches:
 - target:
     group: argoproj.io
@@ -21,7 +22,4 @@ patches:
   patch: |-
     - op: add
       path: /spec/source/repoURL
-      value: https://github.com/YotSP/pGitOps.git
-    - op: add
-      path: /spec/source/targetRevision
-      value: main
+      value: https://yotsp.github.io/ChartRepos/
