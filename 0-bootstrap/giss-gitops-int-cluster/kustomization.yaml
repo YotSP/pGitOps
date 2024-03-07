@@ -14,14 +14,14 @@ patches:
     - op: add
       path: /spec/source/targetRevision
       value: main
-# - target:
-#     group: argoproj.io
-#     kind: AppProject
-#   patch: |-
-#     - op: add
-#       path: /spec/sourceRepos/-
-#       value: https://charts.cloudnativetoolkit.dev
-- target: # 
+- target:
+    group: argoproj.io
+    kind: AppProject
+  patch: |-
+    - op: add
+      path: /spec/sourceRepos/-
+      value: https://yotsp.github.io/ChartRepos/
+- target:
     group: argoproj.io
     kind: AppProject
     labelSelector: "gitops.tier.layer=infra"
