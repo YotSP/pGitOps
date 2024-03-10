@@ -1,0 +1,64 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: infra-int
+  labels:
+    gitops.tier.layer: infra
+    gitops.cluster: int
+spec:
+  sourceRepos: [] # Populated by kustomize patches in 
+#   0-bootstrap/giss-gitops-int-cluster/cluster-int/kustomization.yaml
+  destinations: # Lista de namespaces donde queremos que se puedan desplegar las apps
+  - namespace: int
+    server: https://kubernetes.default.svc
+  clusterResourceWhitelist: # Lista de permisos que van a tener las aplicaciones
+  - group: ""
+    kind: Namespace
+  - group: ""
+    kind: RoleBinding
+  - group: "rbac.authorization.k8s.io"
+    kind: ClusterRole
+  - group: "rbac.authorization.k8s.io"
+    kind: ClusterRoleBinding
+  - group: "security.openshift.io"
+    kind: SecurityContextConstraints
+  - group: policy
+    kind: PodSecurityPolicy
+  - group: "console.openshift.io"
+    kind: ConsoleNotification
+  - group: "console.openshift.io"
+    kind: ConsoleLink
+  - group: "machine.openshift.io"
+  - group: "batch"
+    kind: Job
+  roles:
+  # A role which provides read-only access to all applications in the project
+  - name: read-only
+    description: Read-only privileges to my-project
+    policies:
+    - p, proj:my-project:read-only, applications, get, my-project/*, allow
+    groups:
+    - argocd-admins
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-int
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  labels:
+    gitops.tier.layer: gitops
+    gitops.cluster: int
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: infra
+  source: # repoURL and targetRevision populated by kustomize patches in
+#   0-bootstrap/giss-gitops-int-cluster/cluster-int/kustomization.yaml
+    path: 0-bootstrap/giss-gitops-int-cluster/cluster-int/1-infra
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false

@@ -1,0 +1,11 @@
+resources:
+- namespaces/gint-ap1.yaml
+patches:
+- target:
+    group: argoproj.io
+    kind: Application
+    labelSelector: "gitops.tier.layer=infra"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://yotsp.github.io/ChartRepos/

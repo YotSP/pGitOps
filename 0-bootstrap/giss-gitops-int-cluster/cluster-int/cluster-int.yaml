@@ -1,0 +1,31 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: cluster-int
+  labels:
+    gitops.tier.layer: gitops
+    gitops.cluster: int
+spec:
+  sourceRepos: [] # Populated by kustomize patches in 0-bootstrap/giss-gitops-int-cluster/kustomization.yaml
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-int
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  labels:
+    gitops.tier.layer: gitops
+    gitops.cluster: int
+spec:
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: cluster-int
+  source: # repoURL  and targetRevision populated by kustomize patches in 0-bootstrap/giss-gitops-int-cluster/kustomization.yaml
+    path: 0-bootstrap/giss-gitops-int-cluster/cluster-int
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false

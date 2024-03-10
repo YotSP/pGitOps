@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: 0-bootstrap/giss-gitops-int-cluster
+    path: 0-bootstrap/giss-gitops-int-cluster/
     repoURL: https://github.com/YotSP/pGitOps.git
     targetRevision: main
   syncPolicy:

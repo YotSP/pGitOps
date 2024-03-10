@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: namespace-dev
+  labels:
+    gitops.tier.layer: infra
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+spec:
+  destination:
+    namespace: dev
+    server: https://kubernetes.default.svc
+  project: infra
+  source:
+    path: 0-bootstrap/giss-gitops-int-cluster/1-infra/namespaces/dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
