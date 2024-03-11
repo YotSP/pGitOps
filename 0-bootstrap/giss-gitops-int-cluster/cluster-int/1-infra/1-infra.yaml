@@ -25,7 +25,6 @@ spec:
     kind: SecurityContextConstraints
   - group: policy
     kind: PodSecurityPolicy
-  - group: "machine.openshift.io"
   - group: "batch"
     kind: Job
   roles:
