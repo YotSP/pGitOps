@@ -43,7 +43,7 @@ spec:
     route:
       enabled: false
   initialSSHKnownHosts: {}
-  resourceCustomizations: {}
+  resourceCustomizations: ''
   applicationSet:
     resources:
       limits:
