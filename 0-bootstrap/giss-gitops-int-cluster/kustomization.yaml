@@ -1,5 +1,5 @@
 resources:
-#- cluster-int/cluster-int.yaml
+- cluster-int/cluster-int.yaml
 #- cluster-cer/cluster-cer.yaml
 #- cluster-for/cluster-for.yaml
 #- cluster-pre/cluster-pre.yaml

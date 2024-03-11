@@ -1,0 +1,13 @@
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: custom-argocd-argocd-server-role
+  namespace: openshift-gitops
+rules:
+# Este corrige un error del pod gitops-server sobre falta de permisos para listar application-sets
+  - verbs:
+      - 'list'
+    apiGroups:
+      - 'argoproj.io'
+    resources:
+      - applicationsets
