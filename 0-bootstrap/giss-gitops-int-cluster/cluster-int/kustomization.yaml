@@ -17,6 +17,7 @@ patches:
 - target:
     group: argoproj.io
     kind: AppProject
+    labelSelector: "gitops.tier.layer=gitops"
   patch: |-
     - op: add
       path: /spec/sourceRepos/-
