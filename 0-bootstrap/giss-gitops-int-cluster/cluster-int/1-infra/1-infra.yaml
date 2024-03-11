@@ -12,6 +12,8 @@ spec:
   destinations: # Lista de namespaces donde queremos que se puedan desplegar las apps
   - namespace: int
     server: https://kubernetes.default.svc
+  - namespace: openshift-gitops
+    server: https://kubernetes.default.svc
   clusterResourceWhitelist: # Lista de permisos que van a tener las aplicaciones
   - group: ""
     kind: Namespace
