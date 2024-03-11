@@ -66,7 +66,7 @@ patches:
       path: /spec/source/repoURL/-
       value: https://github.com/YotSP/pGitOps.git
     - op: add
-      path: /spec/source/repoURL
+      path: /spec/source/repoURL/-
       value: https://yotsp.github.io/ChartRepos/
 
 commonAnnotations:
