@@ -25,10 +25,6 @@ spec:
     kind: SecurityContextConstraints
   - group: policy
     kind: PodSecurityPolicy
-  - group: "console.openshift.io"
-    kind: ConsoleNotification
-  - group: "console.openshift.io"
-    kind: ConsoleLink
   - group: "machine.openshift.io"
   - group: "batch"
     kind: Job

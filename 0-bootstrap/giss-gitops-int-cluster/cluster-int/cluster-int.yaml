@@ -8,12 +8,14 @@ metadata:
     gitops.cluster: int
 spec:
   sourceRepos: [] # Populated by kustomize patches in 0-bootstrap/giss-gitops-int-cluster/kustomization.yaml
+#  sourceNamespaces:
+#  - gint-*
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
-    description: Read-only privileges to my-project
+    description: Read-only privileges to cluster-int-proj
     policies:
-    - p, proj:my-project:read-only, applications, get, my-project/*, allow
+    - p, proj:cluster-int-proj:read-only, applications, get, cluster-int-proj/*, allow
     groups:
     - argocd-admins
 ---
@@ -31,7 +33,7 @@ spec:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: cluster-int-proj
-  source: # repoURL  and targetRevision populated by kustomize patches in 0-bootstrap/giss-gitops-int-cluster/kustomization.yaml
+  source: # repoURL and targetRevision populated by kustomize patches in 0-bootstrap/giss-gitops-int-cluster/kustomization.yaml
     path: 0-bootstrap/giss-gitops-int-cluster/cluster-int
   syncPolicy:
     automated:
