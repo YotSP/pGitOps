@@ -26,7 +26,8 @@ spec:
       values: |
         namespace: 
           name: gint-ap1
-          size-cpu: M
-          size-mem: M
-          size-obj: s
+        tallas:
+          tCPU: L
+          tMEM: M
+          tOBJ: L
 
