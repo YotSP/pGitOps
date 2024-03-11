@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: cluster-int
+  name: cluster-int-proj
   labels:
     gitops.tier.layer: gitops
     gitops.cluster: int
@@ -12,7 +12,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cluster-int
+  name: cluster-int-app
   annotations:
     argocd.argoproj.io/sync-wave: "100"
   labels:
