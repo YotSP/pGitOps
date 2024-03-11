@@ -7,7 +7,7 @@ patches:
     labelSelector: "gitops.tier.layer=infra"
   patch: |-
     - op: add
-      path: /spec/sourceRepos/-
+      path: /spec/source/repoURL/-
       value: https://github.com/YotSP/pGitOps.git
     - op: add
       path: /spec/source/repoURL
