@@ -7,12 +7,12 @@ resources:
 #- operadores/operadores.yaml
 
 # Añadimos a todas las aplicaciones de argo el repositorio de Charts como source/repoURL
-# patches:
-# - target:
-#     group: argoproj.io
-#     kind: Application
-#     labelSelector: "gitops.tier.layer=infra"
-#   patch: |-
-#     - op: add
-#       path: /spec/source/repoURL
-#       value: https://yotsp.github.io/ChartRepos/
+patches:
+- target:
+    group: argoproj.io
+    kind: Application
+    labelSelector: "gitops.tier.layer=infra"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://yotsp.github.io/ChartRepos/
