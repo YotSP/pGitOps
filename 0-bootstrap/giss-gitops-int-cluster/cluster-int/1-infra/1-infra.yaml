@@ -45,7 +45,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "100"
   labels:
-    gitops.tier.layer: gitops
+    gitops.tier.layer: infra
     gitops.cluster: int
 spec:
   destination:
