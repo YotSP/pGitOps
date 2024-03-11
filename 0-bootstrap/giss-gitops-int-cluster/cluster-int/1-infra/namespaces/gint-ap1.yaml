@@ -17,7 +17,7 @@ spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: infra-int
+  project: infra-int-proj
   source:
     chart: namespace
     targetRevision: 0.1.0
