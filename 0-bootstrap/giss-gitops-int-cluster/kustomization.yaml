@@ -22,3 +22,18 @@ patches:
 #    - op: add
 #      path: /spec/source/repoURL
 #      value: https://yotsp.github.io/ChartRepos/
+- target:
+    group: argoproj.io
+    kind: AppProject
+    labelSelector: "gitops.tier.layer=gitops"
+  patch: |-
+    - op: add
+      path: /spec/source/repoURL
+      value: https://github.com/YotSP/pGitOps.git
+    - op: add
+      path: /spec/source/targetRevision
+      value: main
+#    - op: add
+#      path: /spec/source/repoURL
+#      value: https://yotsp.github.io/ChartRepos/
+
