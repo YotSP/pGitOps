@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: infra-int
+  name: infra-int-proj
   labels:
     gitops.tier.layer: infra
     gitops.cluster: int
@@ -44,7 +44,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-int
+  name: infra-int-app
   annotations:
     argocd.argoproj.io/sync-wave: "100"
   labels:
@@ -54,7 +54,7 @@ spec:
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
-  project: infra
+  project: infra-int-proj
   source: # repoURL and targetRevision populated by kustomize patches in
 #   0-bootstrap/giss-gitops-int-cluster/cluster-int/kustomization.yaml
     path: 0-bootstrap/giss-gitops-int-cluster/cluster-int/1-infra
