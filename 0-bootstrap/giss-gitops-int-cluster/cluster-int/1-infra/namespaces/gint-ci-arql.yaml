@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ns-gint-ci-arql.yaml
+  labels:
+    gitops.tier.layer: infra
+    gitops.cluster: int
+  annotations:
+    argocd.argoproj.io/sync-wave: "100"
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
+  destination:
+    namespace: openshift-gitops
+    server: https://kubernetes.default.svc
+  project: infra-int-proj
+  source:
+    chart: namespace
+    targetRevision: 0.2.0
+    helm:
+      values: |
+        namespace: 
+          name: gint-ci-arql
+        tallas:
+          tCPU: L
+          tMEM: 2XL
+          tOBJ: M

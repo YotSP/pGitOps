@@ -10,10 +10,28 @@ spec:
   sourceRepos: [] # Populated by kustomize patches in 
 #   0-bootstrap/giss-gitops-int-cluster/cluster-int/kustomization.yaml
   destinations: # Lista de namespaces donde queremos que se puedan desplegar las apps
-  - namespace: int
-    server: https://kubernetes.default.svc
   - namespace: openshift-gitops
     server: https://kubernetes.default.svc
+  - namespace: gint-ci-arql
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-binf
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-bpr8
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-bpro
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-bser
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-btar
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-caif
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-fbio
+    server: https://kubernetes.default.svc
+  - namespace: gint-ci-gspr
+    server: https://kubernetes.default.svc
+  # - namespace: 
+    # server: https://kubernetes.default.svc
   clusterResourceWhitelist: # Lista de permisos que van a tener las aplicaciones
   - group: ""
     kind: Namespace
@@ -29,14 +47,16 @@ spec:
     kind: PodSecurityPolicy
   - group: "batch"
     kind: Job
+  - group: ""
+    kind: ResourceQuota
   roles:
   # A role which provides read-only access to all applications in the project
-  - name: read-only
-    description: Read-only privileges to infra-int-proj
-    policies:
-    - p, proj:infra-int-proj:read-only, applications, get, infra-int-proj/*, allow
-    groups:
-    - argocd-admins
+  # - name: read-only
+  #   description: Read-only privileges to infra-int-proj
+  #   policies:
+  #   - p, proj:infra-int-proj:read-only, applications, get, infra-int-proj/*, allow
+  #   groups:
+  #   - argocd-admins
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
