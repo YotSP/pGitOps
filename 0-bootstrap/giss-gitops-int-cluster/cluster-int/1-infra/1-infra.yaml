@@ -32,9 +32,9 @@ spec:
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
-    description: Read-only privileges to my-project
+    description: Read-only privileges to infra-int-proj
     policies:
-    - p, proj:my-project:read-only, applications, get, my-project/*, allow
+    - p, proj:infra-int-proj:read-only, applications, get, infra-int-proj/*, allow
     groups:
     - argocd-admins
 ---

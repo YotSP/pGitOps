@@ -1,12 +1,12 @@
 resources:
-- 1-infra/1-infra.yaml
+#- 1-infra/1-infra.yaml
 #- 2-services/2-services.yaml
 #- 3-apps/3-apps.yaml
 patches:
 - target: #Este parametro añade los repositorios de origen a los app project.
     group: argoproj.io
     kind: Application
-    labelSelector: "gitops.tier.layer=gitops"
+    labelSelector: "gitops.tier.layer=gitops,gitops.cluster=int"
   patch: |-
     - op: add
       path: /spec/source/repoURL

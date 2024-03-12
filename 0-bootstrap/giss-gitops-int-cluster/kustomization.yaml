@@ -6,8 +6,16 @@ resources:
 #- cluster-configs/cluster-configs.yaml
 #- operadores/operadores.yaml
 
-# Añadimos a todas las aplicaciones de argo el repositorio de Charts como source/repoURL
+#
 patches:
+- target:
+    group: argoproj.io
+    kind: AppProject
+    labelSelector: "gitops.tier.layer=gitops"
+  patch: |-
+    - op: add
+      path: /spec/sourceRepos/-
+      value: https://github.com/YotSP/pGitOps.git
 - target:
     group: argoproj.io
     kind: Application
@@ -19,18 +27,3 @@ patches:
     - op: add
       path: /spec/source/targetRevision
       value: main
-#    - op: add
-#      path: /spec/source/repoURL
-#      value: https://yotsp.github.io/ChartRepos/
-- target:
-    group: argoproj.io
-    kind: AppProject
-    labelSelector: "gitops.tier.layer=gitops"
-  patch: |-
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://github.com/YotSP/pGitOps.git
-    - op: add
-      path: /spec/sourceRepos/-
-      value: https://yotsp.github.io/ChartRepos/
-
