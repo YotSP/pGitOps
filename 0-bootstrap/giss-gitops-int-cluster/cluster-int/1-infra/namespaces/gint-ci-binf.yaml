@@ -20,7 +20,7 @@ spec:
   project: infra-int-proj
   source:
     chart: namespace
-    targetRevision: 0.0.1
+    targetRevision: 0.0.2
 #    repoURL: [] # Inyectado desde el Kustomize
     helm:
       values: |
