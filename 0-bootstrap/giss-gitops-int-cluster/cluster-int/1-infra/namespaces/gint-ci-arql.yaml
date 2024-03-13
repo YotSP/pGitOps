@@ -26,6 +26,7 @@ spec:
       values: |
         namespace: 
           name: gint-ci-arql
+          rq-name: rq-gint-ci-arql
         tallas:
           tCPU: L
           tMEM: 2XL
