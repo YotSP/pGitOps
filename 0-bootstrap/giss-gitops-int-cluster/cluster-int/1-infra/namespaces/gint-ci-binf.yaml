@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ns-gint-ci-arql
+  name: ns-gint-ci-binf
   labels:
     gitops.tier.layer: infra
     gitops.cluster: int
@@ -25,8 +25,8 @@ spec:
     helm:
       values: |
         namespace: 
-          name: gint-ci-arql
+          name: gint-ci-binf
         tallas:
-          tCPU: L
-          tMEM: 2XL
+          tCPU: S
+          tMEM: XS
           tOBJ: M
