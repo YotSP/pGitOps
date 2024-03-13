@@ -1,7 +1,7 @@
 resources:
-- namespaces/gint-ci-arql.yaml
+ - namespaces/gint-ci-arql.yaml
  - namespaces/gint-ci-binf.yaml
-# - namespaces/gint-ci-bpr8.yaml
+#  - namespaces/gint-ci-bpr8.yaml
 # - namespaces/gint-ci-bpro.yaml
 # - namespaces/gint-ci-bser.yaml
 # - namespaces/gint-ci-btar.yaml
