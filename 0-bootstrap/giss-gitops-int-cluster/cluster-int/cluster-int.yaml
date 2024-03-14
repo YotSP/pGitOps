@@ -30,7 +30,7 @@ spec:
   project: cluster-int-proj
   source: # repoURL and targetRevision populated by kustomize patches in 0-bootstrap/giss-gitops-int-cluster/kustomization.yaml
     path: 0-bootstrap/giss-gitops-int-cluster/cluster-int
-  syncPolicy: {}
+  # syncPolicy: {}
     # automated:
     #   prune: true
     #   selfHeal: true

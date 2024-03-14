@@ -75,7 +75,7 @@ spec:
   source: # repoURL and targetRevision populated by kustomize patches in
 #   0-bootstrap/giss-gitops-int-cluster/cluster-int/kustomization.yaml
     path: 0-bootstrap/giss-gitops-int-cluster/cluster-int/1-infra
-  syncPolicy: {}
+  # syncPolicy: {}
     # automated:
     #   prune: true
     #   selfHeal: true
