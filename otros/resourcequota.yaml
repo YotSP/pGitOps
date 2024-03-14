@@ -1,0 +1,122 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: rq-{{- .Values.namespace.name -}}
+  namespace: {{ .Values.namespace.name }}
+spec:
+  hard:
+# Tallas CPU
+#{{- if eq .Values.tallas.tCPU "S" }}
+{{- $rcpu := "175m" -}}
+{{- $lcpu := "250m" -}}
+{{- if eq .Values.tallas.tCPU "M" }}
+{{- $rcpu := "350m" -}}
+{{- $lcpu := "500m" -}}
+{{- else if eq .Values.tallas.tCPU "L" }}
+{{- $rcpu := "675m" -}}
+{{- $lcpu := "1" -}}
+{{- else if eq .Values.tallas.tCPU "XL" }}
+{{- $rcpu := "1350m" -}}
+{{- $lcpu := "2" -}}
+{{- else if eq .Values.tallas.tCPU "2XL" }}
+{{- $rcpu := "3350m" -}}
+{{- $lcpu := "5" -}}
+{{- else if eq .Values.tallas.tCPU "3XL" }}
+{{- $rcpu := "6675m" -}}
+{{- $lcpu := "10" -}}
+{{- end }}
+
+    requests.cpu: {{- $rcpu -}}
+    limits.cpu: {{- $lcpu -}}
+
+
+# Tallas Memoria
+# {{- if eq .Values.tallas.tMEM "XS" }}
+{{- $rmem := "1Gi" -}}
+{{- $lmem := "1.5Gi" -}}
+{{- if eq .Values.tallas.tMEM "S" }}
+{{- $rmem := "2Gi" -}}
+{{- $lmem := "3Gi" -}}
+{{- else if eq .Values.tallas.tMEM "M" }}
+{{- $rmem := "4Gi" -}}
+{{- $lmem := "6Gi" -}}
+{{- else if eq .Values.tallas.tMEM "L" }}
+{{- $rmem := "8Gi" -}}
+{{- $lmem := "12Gi" -}}
+{{- else if eq .Values.tallas.tMEM "XL" }}
+{{- $rmem := "16Gi" -}}
+{{- $lmem := "24Gi" -}}
+{{- else if eq .Values.tallas.tMEM "2XL" }}
+{{- $rmem := "24Gi" -}}
+{{- $lmem := "36Gi" -}}
+{{- else if eq .Values.tallas.tMEM "3XL" }}
+{{- $rmem := "32Gi" -}}
+{{- $lmem := "48Gi" -}}
+{{- else if eq .Values.tallas.tMEM "4XL" }}
+{{- $rmem := "40Gi" -}}
+{{- $lmem := "60Gi" -}}
+{{- else if eq .Values.tallas.tMEM "5XL" }}
+{{- $rmem := "48Gi" -}}
+{{- $lmem := "72Gi" -}}
+{{- else if eq .Values.tallas.tMEM "6XL" }}
+{{- $rmem := "56Gi" -}}
+{{- $lmem := "84Gi" -}}
+{{- end }}
+
+    requests.memory: {{- $rmem -}}
+    limits.memory: {{- $lmem -}}
+
+# Tallas Objetos
+# {{- else if eq .Values.tallas.tOBJ "M" }}
+{{- $cm := 50 -}}
+{{- $pvc := 10 -}}
+{{- $pods := 20 -}}
+{{- $rc := 20 -}}
+{{- $secrets := 100 -}}
+{{- if eq .Values.tallas.tOBJ "L" }}
+{{- $cm := 100 -}}
+{{- $pvc := 20 -}}
+{{- $pods := 40 -}}
+{{- $rc := 40 -}}
+{{- $secrets := 100 -}}
+{{- else if eq .Values.tallas.tOBJ "XL" }}
+{{- $cm := 200 -}}
+{{- $pvc := 40 -}}
+{{- $pods := 80 -}}
+{{- $rc := 80 -}}
+{{- $secrets := 200 -}}
+{{- else if eq .Values.tallas.tOBJ "2XL" }}
+{{- $cm := 600 -}}
+{{- $pvc := 80 -}}
+{{- $pods := 200 -}}
+{{- $rc := 200 -}}
+{{- $secrets := 600 -}}
+{{- end }}
+
+    configmaps: {{- $cm -}}
+    persistentvolumeclaims: {{- $pvc -}}
+    pods: {{- $pods -}}
+    replicationcontrollers: {{- $rc -}}
+    secrets: {{- $secrets -}}
+
+
+
+# ---
+# apiVersion: v1
+# kind: ResourceQuota
+# metadata:
+#   name: 
+#   namespace: {{ .Values.namespace.name }}
+# spec:
+#   hard:
+#     requests.memory: 
+#     limits.memory: 
+# ---
+# apiVersion: v1
+# kind: ResourceQuota
+# metadata:
+#   name: 
+#   namespace: {{ .Values.namespace.name }}
+# spec:
+#   hard:
+#     pods: 
