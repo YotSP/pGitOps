@@ -10,10 +10,10 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  syncPolicy:
-    automated:
-      prune: true
-      # selfHeal: false
+  syncPolicy: {}
+    # automated:
+    #   prune: true
+    #   selfHeal: false
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
