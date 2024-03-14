@@ -13,14 +13,14 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: false
+      # selfHeal: false
   destination:
     namespace: openshift-gitops
     server: https://kubernetes.default.svc
   project: infra-int-proj
   source:
     chart: namespace
-    targetRevision: 0.1.0
+    targetRevision: 0.0.5
 #    repoURL: [] # Inyectado desde el Kustomize
     helm:
       values: |
